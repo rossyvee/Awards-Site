@@ -6,3 +6,10 @@ class SignupForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
+class PostForm(forms.ModelForm):
+    
+
+    class Meta:
+        model = Post
+        fields = ('photo', 'title', 'url', 'description', 'technologies',)
