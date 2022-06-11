@@ -8,3 +8,6 @@ class Profile(models.Model):
     name = models.CharField(blank=True, max_length=120)
     location = models.CharField(max_length=60, blank=True)
     contact = models.EmailField
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
