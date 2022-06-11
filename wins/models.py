@@ -59,3 +59,6 @@ class Rating(models.Model):
     content_average = models.FloatField(default=0, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='rater')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings', null=True)
+
+    def save_rating(self):
+        self.save()
