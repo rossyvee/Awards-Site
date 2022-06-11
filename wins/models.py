@@ -22,4 +22,10 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True)
 
 
+    def __str__(self):
+        return f'{self.title}'
+
+    def delete_post(self):
+        self.delete()
+
 
