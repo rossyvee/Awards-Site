@@ -31,3 +31,5 @@ class Post(models.Model):
     def search_project(cls, title):
         return cls.objects.filter(title__icontains=title).all()
 
+    def all_posts(cls):
+        return cls.objects.all()
