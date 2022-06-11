@@ -33,3 +33,6 @@ class Post(models.Model):
 
     def all_posts(cls):
         return cls.objects.all()
+
+    def save_post(self):
+            self.save()
