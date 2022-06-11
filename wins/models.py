@@ -28,4 +28,6 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
 
+    def search_project(cls, title):
+        return cls.objects.filter(title__icontains=title).all()
 
