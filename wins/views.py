@@ -12,7 +12,7 @@ import random
 
 def home(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
@@ -28,7 +28,7 @@ def home(request):
         print(random_post.photo)
     except Post.DoesNotExist:
         posts = None
-    return render(request, 'sarwardsapp/index.html', {'posts': posts, 'form': form, 'random_post': random_post})
+    return render(request, 'wins/index.html', {'posts': posts, 'form': form,'random_post':random_post})
 
 
 
@@ -49,7 +49,7 @@ def signup(request):
 
 @login_required(login_url='login')
 def profile(request, username):
-    return render(request, 'profile.html')
+    return render(request, 'wins/profile.html')
 
 
 def user_profile(request, username):
@@ -59,7 +59,7 @@ def user_profile(request, username):
     params = {
         'user_prof': user_prof,
     }
-    return render(request, 'userprofile.html', params)
+    return render(request, 'wins/userprofile.html', params)
 
 
 @login_required(login_url='login')
@@ -75,16 +75,16 @@ def edit_profile(request, username):
     else:
         user_form = UpdateUserForm(instance=request.user)
         prof_form = UpdateUserProfileForm(instance=request.user.profile)
-    params = {
+    context = {
         'user_form': user_form,
         'prof_form': prof_form
     }
-    return render(request, 'edit.html', params)
+    return render(request, 'wins/update_profile.html', context)
 
 
 @login_required(login_url='login')
 def project(request, post):
-    post = Post.objects.get(title=post)
+    post = Post.objects.filter(title=post).first()
     ratings = Rating.objects.filter(user=request.user, post=post).first()
     rating_status = None
     if ratings is None:
@@ -125,7 +125,7 @@ def project(request, post):
         'rating_status': rating_status
 
     }
-    return render(request, 'project.html', params)
+    return render(request, 'wins/project.html', params)
 
 
 def search_project(request):
