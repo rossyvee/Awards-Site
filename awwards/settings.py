@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap4',
     'crispy_forms',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -166,3 +167,5 @@ EMAIL_PORT=config('EMAIL_PORT',cast=int)
 django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/'
