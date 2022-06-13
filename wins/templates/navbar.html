@@ -1,50 +1,79 @@
 <nav class="navbar navbar-expand-lg navbar-dark  text-dark" >
-    <div class="container-fluid ">
-      <a style="font-size: 2em; color: black;font-family: 'Pacifico', cursive;" class="navbar-brand display-2" href="#">  </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link active text-dark" aria-current="page" href="{% url 'index'%}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active text-dark" aria-current="page" href="#" style="font-size: 3em;">awwards</a>
-          </li>
-         
-          {%if request.user.is_authenticated%}
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                 aria-haspopup="true"
-                 aria-expanded="false">{{ user.username|title }} <img class="rounded-circle nav-img"
-                                                                      src="{{ user.profile.profile_picture.url }}"
-                                                                      alt="">
-              </a>
-              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item text-center" href="{% url 'profile' user.username %}">Profile</a>
-                  <hr>
-                  <a class="dropdown-item text-center" href="{% url 'edit' user.username  %}"> Update profile</a>
-                  <hr>
-                  <a href="{% url 'logout' %}" class="text-secondary text-center dropdown-item">Log Out</a>
-  
-  
-              </div>
-          </li >
-      {%else%}
-      <div class="d-flex justify-content-end px-5 " > 
-        <p class="my-auto "><a style="color: rgb(66, 26, 54);margin-right: 2vw;" class=" fs-2 text-" href="{% url 'signup'%}"> Register</a></p>
-        <p class="my-auto"><a class="" style="color: rgb(66, 26, 54);" href="{% url 'login'%}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Login</a></p>
-      </div>
-      {%endif%}
-
-      <button class="btn btn-dark btn-sm" id="site" data-toggle="modal" data-target=".bd-example-modal-xl">
-        Submit your site
+  <div class="container-fluid ">
+    <a style="font-size: 2em; color: black;font-family: 'Pacifico', cursive;" class="navbar-brand display-2" href="#">  </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-          
-        </ul>
-        
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" href="{% url 'index'%}"><i style="font-size: 2em;" class="fa-solid fa-house"></i></a>
+        </li>
+
+        <li class="nav-item active">
+          <form class="form-inline text-dark" method="get" action="{% url 'search' %}">
+              {% csrf_token %}
+              <div class="md-form my-0">
+                  <input class="form-control mr-sm-2 text-dark  rounded-pill px-2" type="text" placeholder="Search" name="title" aria-label="Search" style="border: 1px solid black;">
+              </div>
+          </form>
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" href="#" style="font-size: 3em;">Awwards</a>
+        </li>
        
-      </div>
+        {%if request.user.is_authenticated%}
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">APIS
+            </a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item text-center" href="api/users/">Users</a>
+                <hr>
+                <a class="dropdown-item text-center" href="api/posts/"> Posts</a>
+                <hr>
+                <a href="api/profile/" class="text-secondary text-center dropdown-item">Profiles</a>
+
+
+            </div>
+        </li >
+
+
+
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">{{ user.username|title }} <img class="rounded-circle nav-img"
+                                                                    src="{{ user.profile.profile_picture.url }}"
+                                                                    alt="">
+            </a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item text-center" href="{% url 'profile' user.username %}">Profile</a>
+                <hr>
+                <a class="dropdown-item text-center" href="{% url 'edit' user.username  %}"> Update profile</a>
+                <hr>
+                <a href="{% url 'logout' %}" class="text-secondary text-center dropdown-item">Log Out</a>
+
+
+            </div>
+        </li >
+
+    {%else%}
+    <div class="d-flex justify-content-end px-5 " > 
+      <p class="my-auto "><a style="color: rgb(66, 26, 54);margin-right: 2vw;" class=" fs-2 text-" href="{% url 'signup'%}"> Register</a></p>
+      <p class="my-auto"><a class="" style="color: rgb(66, 26, 54);" href="{% url 'login'%}"><i class="fa-solid fa-arrow-right-from-bracket"></i>Login</a></p>
     </div>
-  </nav>
+    {%endif%}
+
+    <button class="btn btn-dark btn-sm" id="site" data-toggle="modal" data-target=".bd-example-modal-xl">
+      Submit your site
+  </button>
+        
+      </ul>
+      
+     
+    </div>
+  </div>
+</nav>
