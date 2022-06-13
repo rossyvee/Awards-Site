@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %} -->
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -35,8 +35,8 @@
                                 </div>
                                 <div class="box-notesite js-notes">
                                     <ul>
-                                         {% for rating in random_post.ratings.all %}
-                                        {% if forloop.counter is random_post.ratings.all.count %} -->
+                                        {% for rating in random_post.ratings.all %}
+                                        {% if forloop.counter is random_post.ratings.all.count %}
                                         <li class="circle-note-progress style-design" data-note="">
                                             <div class="circle">
                                                 <div class="des">
@@ -86,7 +86,7 @@
                             </div>
                             <div class="box-bl">
                                 <a href="{{random_post.url}}" data-identifier="" data-type="submission"
-                                   class="js-visit-item bt-default green-fill" target="_blank" rel="noopener nofollow"
+                                   class="js-visit-item bt-default dark-fill rounded-pill" target="_blank" rel="noopener nofollow"
                                    style="margin-top:-60px;">Visit
                                     Site</a>
                             </div>
