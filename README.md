@@ -1,4 +1,4 @@
-# Instagram Clone
+# Awwards
 ### ROSELINE AKINYI
 
 ## Table of Content
