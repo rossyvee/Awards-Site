@@ -23,11 +23,11 @@ A social media app that allows users to create account, upload photos, update th
 * CSS
 ## Requirements
 * A stable internet connection
-<!-- ## User Story
+## User Story
 * Create user profile and login
 * Post different projects
 * View projects' details
-* Vote for projects and leave a comment -->
+* Vote for projects and leave a comment
 ## set up instruction and installation
 To get to this project
  1. clone this repository to a folder 
