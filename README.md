@@ -11,7 +11,7 @@
 + [Authors Info](#aut)
 
 ## Description
-A social media app that allows users to create account, upload photos, update their profile, like and comment on posts
+This is a django application that allows users to post their projects for others to rate and review
 ## Technology Used
 * [Python3.6](https://www.python.org/)
 * [Django](https://www.djangoproject.com/)
