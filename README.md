@@ -56,8 +56,8 @@ Open the application on your browser 127.0.0.1:8000
 There are no known bugs
 
 ### Admin creds
-user:rose
-pass:pass123
+user:rossy
+pass:nyakoi2014
   ## Licence
 MIT License
 Copyright (c) [2022] [Roseline Akinyi] 
